@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InspirAI - 下一代AI数据标注与处理</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Custom configuration for a modern, tech-focused look -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-blue': '#4F46E5', // Indigo 600
+                        'secondary-purple': '#8B5CF6', // Violet 500
+                        'dark-bg': '#0F172A', // Slate 900
+                        'light-bg': '#F8FAFC', // Slate 50
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Ensuring the body uses the defined font */
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #1E293B; /* Slate 800 */
+        }
+    </style>
+</head>
+<body class="bg-light-bg">
+
+    <!-- Header / Navbar -->
+    <header class="sticky top-0 z-50 bg-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <a href="#" class="text-3xl font-extrabold text-primary-blue tracking-tighter">
+                    Inspir<span class="text-secondary-purple">AI</span>
+                </a>
+                
+                <!-- Desktop Navigation Links -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#services" class="text-gray-600 hover:text-primary-blue transition duration-150 font-medium">服务内容</a>
+                    <a href="#technology" class="text-gray-600 hover:text-primary-blue transition duration-150 font-medium">技术优势</a>
+                    <a href="#why-us" class="text-gray-600 hover:text-primary-blue transition duration-150 font-medium">选择我们</a>
+                    <a href="#clients" class="text-gray-600 hover:text-primary-blue transition duration-150 font-medium">我们的客户</a>
+                    <a href="#contact" class="px-4 py-2 bg-primary-blue text-white rounded-lg shadow-md hover:bg-secondary-purple transition duration-200 font-semibold">联系我们</a>
+                </nav>
+
+                <!-- Mobile Menu Button (Placeholder for JS toggle) -->
+                <button id="menu-button" class="md:hidden p-2 text-gray-500 hover:text-primary-blue focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Navigation Drawer (Hidden by default) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 py-4">
+            <a href="#services" class="block px-4 py-2 text-gray-700 hover:bg-gray-50">服务内容</a>
+            <a href="#technology" class="block px-4 py-2 text-gray-700 hover:bg-gray-50">技术优势</a>
+            <a href="#why-us" class="block px-4 py-2 text-gray-700 hover:bg-gray-50">选择我们</a>
+            <a href="#clients" class="block px-4 py-2 text-gray-700 hover:bg-gray-50">我们的客户</a>
+            <a href="#contact" class="block px-4 py-2 text-white bg-primary-blue hover:bg-secondary-purple mt-2 mx-4 rounded-lg text-center">联系我们</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative bg-dark-bg text-white py-20 md:py-32 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <h1 class="text-4xl sm:text-6xl font-extrabold mb-6 leading-tight">
+                为下一代<span class="text-secondary-purple">智能AI</span>提供数据动力
+            </h1>
+            <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-10">
+                InspirAI 提供高质量、可扩展的AI数据标注平台和托管服务，利用SOTA模型实现卓越的外包效率和准确性。
+            </p>
+            <a href="#contact" class="inline-block px-10 py-4 bg-primary-blue text-white text-lg font-bold rounded-xl shadow-2xl transition duration-300 transform hover:scale-105 hover:bg-secondary-purple focus:outline-none focus:ring-4 focus:ring-primary-blue focus:ring-opacity-50">
+                立即开启您的项目
+            </a>
+        </div>
+        <!-- Background element for visual flair -->
+        <div class="absolute inset-0 opacity-10">
+            <svg class="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse">
+                        <path d="M 10 0 L 0 0 0 10" fill="none" stroke="currentColor" stroke-width="0.1" />
+                    </pattern>
+                </defs>
+                <rect width="100%" height="100%" fill="url(#grid)" class="text-primary-blue" />
+            </svg>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-16 md:py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-bold text-center text-dark-bg mb-4">我们的高质量外包服务</h2>
+            <p class="text-xl text-center text-gray-500 mb-12 max-w-3xl mx-auto">
+                我们通过平台覆盖整个数据生命周期，确保您的AI模型基于精确标注、高准确度的数据进行训练。
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Service 1: Image & Video Annotation -->
+                <div class="p-8 bg-light-bg rounded-xl shadow-lg hover:shadow-xl transition duration-300 border border-gray-100">
+                    <div class="text-secondary-purple mb-4">
+                        <!-- Icon: Eye -->
+                        <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
+                    </div>
+                    <h3 class="text-2xl font-semibold text-dark-bg mb-3">视觉数据标注</h3>
+                    <p class="text-gray-600">
+                        为计算机视觉、机器人技术和自动驾驶系统提供精确的边界框、分割、关键点检测和3D点云标注。
+                    </p>
+                </div>
+
+                <!-- Service 2: Text & NLP Annotation -->
+                <div class="p-8 bg-light-bg rounded-xl shadow-lg hover:shadow-xl transition duration-300 border border-gray-100">
+                    <div class="text-secondary-purple mb-4">
+                        <!-- Icon: Chat bubble -->
+                        <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.649A9 9 0 0112 2c4.97 0 9 3.582 9 8z"></path></svg>
+                    </div>
+                    <h3 class="text-2xl font-semibold text-dark-bg mb-3">自然语言处理与标注</h3>
+                    <p class="text-gray-600">
+                        为大型语言模型（LLM）训练提供命名实体识别（NER）、情感分析、文本分类和人机协作内容审核。
+                    </p>
+                </div>
+
+                <!-- Service 3: Data Curation & Validation -->
+                <div class="p-8 bg-light-bg rounded-xl shadow-lg hover:shadow-xl transition duration-300 border border-gray-100">
+                    <div class="text-secondary-purple mb-4">
+                        <!-- Icon: Checkmark -->
+                        <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-10.618 3.04A12.023 12.023 0 001 12c0 3.071 1.071 5.756 2.84 8.016A11.955 11.955 0 0112 21.056c3.15-.36 5.898-1.748 7.84-3.54z"></path></svg>
+                    </div>
+                    <h3 class="text-2xl font-semibold text-dark-bg mb-3">数据治理与验证</h3>
+                    <p class="text-gray-600">
+                        我们的AI驱动平台促进数据清洗、去重、偏差缓解和严格的质量保证流程，保证训练数据集的完整性。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technology Section (The AI Advantage) -->
+    <section id="technology" class="py-16 md:py-24 bg-dark-bg text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-bold text-center mb-4">SOTA模型优势</h2>
+            <p class="text-xl text-center text-gray-400 mb-12 max-w-3xl mx-auto">
+                我们不仅使用人工标注师，还通过尖端AI技术为其赋能，以实现更快、更低成本、更一致的数据处理。
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Tech Card 1: OpenAI -->
+                <div class="p-6 bg-slate-800 rounded-xl shadow-2xl">
+                    <h4 class="text-2xl font-semibold text-green-400 mb-2">OpenAI</h4>
+                    <p class="text-gray-300 text-sm">
+                        用于复杂的推理任务、提示工程和合成数据生成，以实现最大化的数据多样性。
+                    </p>
+                </div>
+                <!-- Tech Card 2: Anthropic -->
+                <div class="p-6 bg-slate-800 rounded-xl shadow-2xl">
+                    <h4 class="text-2xl font-semibold text-orange-400 mb-2">Anthropic</h4>
+                    <p class="text-gray-300 text-sm">
+                        用于安全的、遵循AI宪法的对齐、深度的语境理解和稳健的伦理合规标注。
+                    </p>
+                </div>
+                <!-- Tech Card 3: Google -->
+                <div class="p-6 bg-slate-800 rounded-xl shadow-2xl">
+                    <h4 class="text-2xl font-semibold text-red-400 mb-2">Google</h4>
+                    <p class="text-gray-300 text-sm">
+                        用于高效的多模态数据预标注，将人工工作量减少高达80%。
+                    </p>
+                </div>
+                <!-- Tech Card 4: InspirAI Proprietary -->
+                <div class="p-6 bg-slate-800 rounded-xl shadow-2xl">
+                    <h4 class="text-2xl font-semibold text-primary-blue mb-2">InspirAI 专有模型</h4>
+                    <p class="text-gray-300 text-sm">
+                        我们的专有模型对SOTA模型输出进行微调和验证，确保99.9%以上的领域特定准确率。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Us Section -->
+    <section id="why-us" class="py-16 md:py-24 bg-light-bg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-bold text-center text-dark-bg mb-4">为什么选择InspirAI?</h2>
+            <p class="text-xl text-center text-gray-500 mb-12 max-w-3xl mx-auto">
+                我们对卓越平台、数据主权和透明计费的承诺，使我们成为您理想的AI合作伙伴。
+            </p>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
+                <!-- Feature 1: Unrivaled Quality -->
+                <div class="flex flex-col items-center text-center p-6 bg-white rounded-xl shadow-md border-t-4 border-primary-blue h-full">
+                    <svg class="w-12 h-12 text-primary-blue mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-10.618 3.04A12.023 12.023 0 001 12c0 3.071 1.071 5.756 2.84 8.016A11.955 11.955 0 0112 21.056c3.15-.36 5.898-1.748 7.84-3.54z"></path></svg>
+                    <h3 class="text-xl font-semibold text-dark-bg mb-2">精度与质量</h3>
+                    <p class="text-gray-600">
+                        三阶段质量保证流程：AI预验证、人工复审和客户特定指标检查，确保99%+的准确率。
+                    </p>
+                </div>
+
+                <!-- Feature 2: Scalability & Speed -->
+                <div class="flex flex-col items-center text-center p-6 bg-white rounded-xl shadow-md border-t-4 border-secondary-purple h-full">
+                    <svg class="w-12 h-12 text-secondary-purple mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    <h3 class="text-xl font-semibold text-dark-bg mb-2">可扩展性与速度</h3>
+                    <p class="text-gray-600">
+                        全球范围内经过审核的标注人员与AI辅助工具相结合，确保应对大规模数据集和紧张截止日期的快速扩展能力。
+                    </p>
+                </div>
+
+                <!-- Feature 3: Data Sovereignty & Security (Updated) -->
+                <div class="flex flex-col items-center text-center p-6 bg-white rounded-xl shadow-md border-t-4 border-primary-blue h-full">
+                    <svg class="w-12 h-12 text-primary-blue mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+                    <h3 class="text-xl font-semibold text-dark-bg mb-2">数据主权与安全</h3>
+                    <p class="text-gray-600">
+                        **数据不触碰政策：** 您的原始数据和结果始终在您的控制之下。我们仅管理安全的平台访问和标注流程，确保完全合规。
+                    </p>
+                </div>
+            </div>
+            
+            <!-- New Billing/Settlement Block -->
+            <div class="mt-16 pt-10 border-t border-gray-200">
+                <h3 class="text-3xl font-bold text-center text-dark-bg mb-6">透明且灵活的计费模式</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Model 1: Fully Managed Cost -->
+                    <div class="p-6 bg-white rounded-xl shadow-xl border-l-4 border-secondary-purple">
+                        <h4 class="text-2xl font-semibold text-secondary-purple mb-3">模式一：全托管费用（综合结算）</h4>
+                        <p class="text-gray-600">
+                            InspirAI 负责完整的标注服务，包括平台使用、人工成本和**所有底层SOTA模型（如GPT/Claude/Gemini）的API使用费用结算**。您只需接收一张综合发票。
+                        </p>
+                    </div>
+                    <!-- Model 2: Platform Rental -->
+                    <div class="p-6 bg-white rounded-xl shadow-xl border-l-4 border-primary-blue">
+                        <h4 class="text-2xl font-semibold text-primary-blue mb-3">模式二：平台租赁（客户管理API）</h4>
+                        <p class="text-gray-600">
+                            您向InspirAI支付平台工具和管理流程的服务费。**客户负责直接与AI厂商（如OpenAI、Anthropic、Google）建立并结算模型API费用**。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Clients Section (New) -->
+    <section id="clients" class="py-16 md:py-24 bg-dark-bg text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-bold text-center mb-4 text-white">我们的客户</h2>
+            <p class="text-xl text-center text-gray-400 mb-12 max-w-3xl mx-auto">
+                InspirAI 赋能各行业领军企业，加速他们的AI战略落地。
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Client Case 1: State-Owned Enterprises (SOE) / 国央企 -->
+                <div class="p-8 bg-slate-800 rounded-xl shadow-2xl border-t-4 border-red-400 h-full">
+                    <h3 class="text-2xl font-semibold text-red-400 mb-3">国央企专有模型</h3>
+                    <p class="text-gray-300 mb-4">
+                        我们为国内领先的国有及中央企业提供数据标注平台和专有模型训练数据服务。
+                    </p>
+                    <ul class="list-disc list-inside text-gray-400 space-y-2 text-sm">
+                        <li>**核心需求:** 构建安全、合规的内部垂域/私有小模型。</li>
+                        <li>**我们的价值:** 提供隔离环境和高可靠性、高精度的行业特定数据。</li>
+                    </ul>
+                </div>
+
+                <!-- Client Case 2: Leading Education Client / 教育客户 -->
+                <div class="p-8 bg-slate-800 rounded-xl shadow-2xl border-t-4 border-green-400 h-full">
+                    <h3 class="text-2xl font-semibold text-green-400 mb-3">数学模型训练</h3>
+                    <p class="text-gray-300 mb-4">
+                        某领先的国内教育科技客户使用我们的平台，训练其用于智能辅导的数学大模型。
+                    </p>
+                    <ul class="list-disc list-inside text-gray-400 space-y-2 text-sm">
+                        <li>**核心需求:** 大规模、高复杂度、低错误率的数学公式和解题步骤标注。</li>
+                        <li>**我们的价值:** 提供专业的标注团队和定制化的数学公式识别工具。</li>
+                    </ul>
+                </div>
+
+                <!-- Client Case 3: Stock Photo Platform / 图库平台 -->
+                <div class="p-8 bg-slate-800 rounded-xl shadow-2xl border-t-4 border-yellow-400 h-full">
+                    <h3 class="text-2xl font-semibold text-yellow-400 mb-3">数字资产AI管理</h3>
+                    <p class="text-gray-300 mb-4">
+                        与某知名图库平台合作，实现海量数字资产的AI分类、内容理解和版权管理。
+                    </p>
+                    <ul class="list-disc list-inside text-gray-400 space-y-2 text-sm">
+                        <li>**核心需求:** 利用数据进行AI赋能，并与互联网巨头开展深度数据合作。</li>
+                        <li>**我们的价值:** 提升数据价值，助力客户利用高质量数据资产拓展商业合作边界。</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 md:py-24 bg-secondary-purple bg-opacity-95 text-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-bold text-center mb-4">准备好加速您的AI项目了吗？</h2>
+            <p class="text-xl text-center text-purple-200 mb-12">
+                获取免费咨询和我们的数据专家报价。
+            </p>
+
+            <form id="contact-form" class="bg-white p-8 rounded-xl shadow-2xl space-y-6">
+                <!-- Row 1: Name and Email -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label for="name" class="block text-sm font-medium text-gray-700">姓名</label>
+                        <input type="text" id="name" name="name" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-primary-blue focus:border-primary-blue sm:text-sm">
+                    </div>
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-700">工作邮箱</label>
+                        <input type="email" id="email" name="email" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-primary-blue focus:border-primary-blue sm:text-sm">
+                    </div>
+                </div>
+                <!-- Row 2: Company and Phone -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label for="company" class="block text-sm font-medium text-gray-700">公司/组织名称</label>
+                        <input type="text" id="company" name="company" class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-primary-blue focus:border-primary-blue sm:text-sm">
+                    </div>
+                    <div>
+                        <label for="phone" class="block text-sm font-medium text-gray-700">联系电话</label>
+                        <input type="tel" id="phone" name="phone" class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-primary-blue focus:border-primary-blue sm:text-sm">
+                    </div>
+                </div>
+                <!-- Row 3: Project Requirement -->
+                <div>
+                    <label for="project" class="block text-sm font-medium text-gray-700">项目需求 (例如: NLP, 计算机视觉, 数据量)</label>
+                    <textarea id="project" name="project" rows="4" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-primary-blue focus:border-primary-blue sm:text-sm"></textarea>
+                </div>
+                
+                <button type="submit" class="w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-lg font-bold text-white bg-primary-blue hover:bg-secondary-purple focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-blue transition duration-200">
+                    申请报价
+                </button>
+            </form>
+            <div id="contact-message" class="mt-4 text-center text-lg font-semibold text-white hidden"></div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark-bg border-t border-gray-700 py-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-gray-400">
+            <div class="text-xl font-bold mb-4">Inspir<span class="text-secondary-purple">AI</span></div>
+            <p class="mb-2">您值得信赖的AI数据卓越合作伙伴。</p>
+            <p class="text-sm">
+                &copy; 2025 InspirAI Corp. 保留所有权利. | 
+                <a href="#services" class="hover:text-white">服务内容</a> | 
+                <a href="#technology" class="hover:text-white">技术优势</a> |
+                <a href="#clients" class="hover:text-white">我们的客户</a>
+            </p>
+        </div>
+    </footer>
+
+    <!-- JavaScript for interactivity (Mobile Menu and Form Submission) -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Mobile Menu Toggle
+            const menuButton = document.getElementById('menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            menuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // Close mobile menu when a link is clicked
+            mobileMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+
+            // Contact Form Submission (Simulation)
+            const contactForm = document.getElementById('contact-form');
+            const contactMessage = document.getElementById('contact-message');
+
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                contactMessage.classList.remove('hidden', 'text-red-400');
+                contactMessage.classList.add('text-green-400');
+                // Translated success message
+                contactMessage.textContent = '感谢您的垂询！我们已收到您的请求，专家将在24小时内与您取得联系。';
+                
+                // Clear the form fields
+                contactForm.reset();
+                
+                // Hide the message after 5 seconds
+                setTimeout(() => {
+                    contactMessage.classList.add('hidden');
+                }, 5000);
+            });
+        });
+    </script>
+</body>
+</html>
